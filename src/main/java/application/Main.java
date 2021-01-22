@@ -29,28 +29,21 @@ public class Main {
     }
 
     Boolean exists(String[] board, String word) {
-        if (isNotNull(board) == true) {
-            return validBoard(board);
-        } else {
+            if(validBoard(board) && word != null) {
+                return true;}
             return false;
         }
-    }
 
     boolean validBoard(String[] board) {
-        int lenght;
+        if (board == null) {return false;}
         int arrayWidth = board[0].length();
-        boolean valid = false;
 
         for (int i = 1; i < board.length; i++) {
-            lenght = board[i].length();
-            if (arrayWidth == lenght) {
-                valid = true;
-            } else {
-                valid = false;
-                break;
+            if (arrayWidth != board[i].length()) {
+                return false;
             }
         }
-        return valid;
+        return true;
     }
 
     boolean isNotNull(Object input) {
@@ -65,7 +58,7 @@ public class Main {
         int arraySpaces;
         boolean booleanVariable = false;
         arraySpaces = arrayWidth * board.length;
-        if (arraySpaces <= word.length()) {
+        if (arraySpaces >= word.length()) {
             booleanVariable = true;
         } else {
             booleanVariable = false;

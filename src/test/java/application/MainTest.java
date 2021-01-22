@@ -47,4 +47,12 @@ class MainTest {
     void whenInputWordIsLongerThanArraySpaces_thenFalse() {
         Assertions.assertFalse(main.isNotTooLong(new String[]{"A","B"}, "ABC"));
     }
+    @Test
+    void whenInputWordIsSameThanArraySpaces_thenTrue() {
+        Assertions.assertTrue(main.isNotTooLong(new String[]{"A","B"}, "AB"));
+    }
+    @Test
+    void whenInputWordIsShorterThanArraySpaces_thenTrue() {
+        Assertions.assertTrue(main.isNotTooLong(new String[]{"A","B"}, "B"));
+    }
 }
