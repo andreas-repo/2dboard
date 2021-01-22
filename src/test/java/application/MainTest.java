@@ -87,8 +87,33 @@ class MainTest {
     }
 
     @Test
-    void whenWordExistInBoardAccrossLines_thenTrue() {
-        Assertions.assertTrue(main.exists(new String[][]{{"A"},{"B"}}, "AB"));
+    void whenGameExists_ThenTrue(){
+        Assertions.assertNotNull(main.game(new String[][]{{"A"},{"B"}}, "c"));
+    }
+
+    @Test
+    void whenGameFinishesWithIncorrectParameters_ThenFalse(){
+        Assertions.assertFalse(main.game(new String[][]{{"A"},{"B"}}, "c"));
+    }
+
+    @Test
+    void whenGameFinishesWithCorrectParameters_ThenTrue(){
+        Assertions.assertTrue(main.game(new String[][]{{"A"},{"B"}}, "A"));
+    }
+
+    @Test
+    void whenUniversalMatcherNoStartPoint_ThenFalse(){
+        Assertions.assertFalse(main.match(new String[][]{{"A"},{"B"}}, "Z"));
+    }
+
+    @Test
+    void whenUniversalMatcherStartPoint_ThenTrue(){
+        Assertions.assertTrue(main.match(new String[][]{{"A"},{"B"}}, "A"));
+    }
+
+    @Test
+    void whenUniversalMatcherSecondLetter_ThenTrue(){
+        Assertions.assertTrue(main.match(new String[][]{{"A"},{"B"}}, "AB"));
     }
 
 }

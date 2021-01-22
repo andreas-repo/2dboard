@@ -37,7 +37,6 @@ public class Main {
     }
 
     Boolean exists(String[][] board, String word) {
-
         return (inputValidation(board, word) && match(board, word) && checkForCase(word));
     }
 
@@ -61,8 +60,8 @@ public class Main {
         if (board == null) {
             return false;
         }
-        int arrayWidth = board[0].length;
 
+        int arrayWidth = board[0].length;
         for (int i = 1; i < board.length; i++) {
             if (arrayWidth != board[i].length) {
                 return false;
@@ -80,11 +79,32 @@ public class Main {
     }
 
     boolean match(String[][] board, String word) {
-        for (String[] line : board) {
-            if (Arrays.toString(line).contains(word)) {
-                return true;
+        int indexOfFirstLetter = 0;
+        int indexOfSecondLetter;
+        String[] wordArray = word.split("");
+        for (int i = 0; i < board.length; i++) {
+            if (board[0][i].equals(wordArray[0])) {
+                indexOfFirstLetter = i;
+                break;
             }
         }
+
+        if (indexOfFirstLetter < 1) {
+            return false;
+        }
+            if (board[0][indexOfFirstLetter-1].equals(wordArray[1])) {
+                indexOfSecondLetter = indexOfFirstLetter-1;
+            } else if (board[0][indexOfFirstLetter+1].equals(wordArray[1])) {
+                indexOfSecondLetter = indexOfFirstLetter+1 ;
+            } else {
+                return false;
+            }
+
         return false;
+    }
+
+    boolean game(String[][] board, String word) {
+        return exists(board, word);
+
     }
 }
