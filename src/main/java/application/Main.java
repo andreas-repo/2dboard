@@ -26,4 +26,26 @@ public class Main {
     public static void main(String[] args) {
 
     }
+
+    Boolean exists(String[] board, String word) {
+        return validBoard(board);
+    }
+
+    private boolean validBoard(String[] board) {
+        int lenght;
+        int arrayWidth = board[0].length();
+        boolean valid = false;
+
+        for (int i = 1; i < board.length; i++) {
+            lenght = board[i].length();
+            if (arrayWidth == lenght) {
+                valid = true;
+            } else {
+                valid = false;
+                break;
+            }
+        }
+        return valid;
+    }
+
 }
