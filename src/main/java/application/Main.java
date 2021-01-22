@@ -90,15 +90,16 @@ public class Main {
         }
 
         if (indexOfFirstLetter < 1) {
+            if (board[0][indexOfFirstLetter + 1].equals(wordArray[1])) {
+                indexOfSecondLetter = indexOfFirstLetter + 1;
+            }
+        } else if (indexOfFirstLetter > 1) {
+            if (board[0][indexOfFirstLetter - 1].equals(wordArray[1])) {
+                indexOfSecondLetter = indexOfFirstLetter - 1;
+            }
+        } else {
             return false;
         }
-            if (board[0][indexOfFirstLetter-1].equals(wordArray[1])) {
-                indexOfSecondLetter = indexOfFirstLetter-1;
-            } else if (board[0][indexOfFirstLetter+1].equals(wordArray[1])) {
-                indexOfSecondLetter = indexOfFirstLetter+1 ;
-            } else {
-                return false;
-            }
 
         return false;
     }
