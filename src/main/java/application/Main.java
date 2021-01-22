@@ -29,10 +29,8 @@ public class Main {
     }
 
     Boolean exists(String[] board, String word) {
-            if(validBoard(board) && word != null) {
-                return true;}
-            return false;
-        }
+        return (inputValidation(board, word) && match(board, word));
+    }
 
     boolean validBoard(String[] board) {
         if (board == null) {return false;}
@@ -46,23 +44,33 @@ public class Main {
         return true;
     }
 
-    boolean isNotNull(Object input) {
-        boolean booleanVariable = false;
-        booleanVariable = input != null;
-        return booleanVariable;
-    }
-
     boolean isNotTooLong(String[] board, String word) {
-        validBoard(board);
         int arrayWidth = board[0].length();
         int arraySpaces;
-        boolean booleanVariable = false;
+
         arraySpaces = arrayWidth * board.length;
         if (arraySpaces >= word.length()) {
-            booleanVariable = true;
-        } else {
-            booleanVariable = false;
+            return true;
         }
-        return booleanVariable;
+
+        return false;
+    }
+
+    boolean inputValidation(String[] board, String word) {
+        if (board == null || word == null) {
+            return false;
+        }
+
+        return (validBoard(board) && isNotTooLong(board, word));
+
+    }
+
+    boolean match(String[] board, String word) {
+        for (String line : board) {
+            if (line.contains(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

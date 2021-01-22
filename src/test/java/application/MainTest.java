@@ -53,6 +53,39 @@ class MainTest {
     }
     @Test
     void whenInputWordIsShorterThanArraySpaces_thenTrue() {
-        Assertions.assertTrue(main.isNotTooLong(new String[]{"A","B"}, "B"));
+    Assertions.assertTrue(main.isNotTooLong(new String[]{"A","B"}, "B"));
     }
+
+    @Test
+    void whenWordMatchesBoard_thenTrue() {
+        Assertions.assertTrue(main.match(new String[]{"A","B"}, "B"));
+    }
+
+    @Test
+    void whenWordDoesntMatchBoard_thenFalse() {
+        Assertions.assertFalse(main.match(new String[]{"A","B"}, "C"));
+    }
+
+    @Test
+    void whenWordExistInBoard_thenTrue() {
+        Assertions.assertTrue(main.exists(new String[]{"A","B"}, "B"));
+    }
+
+    @Test
+    void whenWordDoesntExistInBoard_thenFalse() {
+        Assertions.assertFalse(main.exists(new String[]{"A","B"}, "C"));
+    }
+
+    /*
+    @Test
+    void whenWordExistInBoardAccrossLines_thenTrue() {
+        Assertions.assertTrue(main.exists(new String[]{"A","B"}, "AB"));
+    }
+    */
+
+
+
+
+
+
 }
