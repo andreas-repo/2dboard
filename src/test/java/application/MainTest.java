@@ -76,11 +76,19 @@ class MainTest {
         Assertions.assertFalse(main.exists(new String[][]{{"A"},{"B"}}, "C"));
     }
 
-    /*
+    @Test
+    void whenLowerCaseLetterInWord_thenFalse() {
+        Assertions.assertFalse(main.exists(new String[][]{{"A"},{"B"}}, "c"));
+    }
+
+    @Test
+    void whenLowerCaseLetterInWord_thenTrue() {
+        Assertions.assertEquals(main.wordToUpperCase(new String("sausage")),"SAUSAGE");
+    }
+
     @Test
     void whenWordExistInBoardAccrossLines_thenTrue() {
-        Assertions.assertTrue(main.exists(new String[]{"A","B"}, "AB"));
+        Assertions.assertTrue(main.exists(new String[][]{{"A"},{"B"}}, "AB"));
     }
-    */
 
 }

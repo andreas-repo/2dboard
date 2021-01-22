@@ -26,18 +26,27 @@ public class Main {
      */
 
     /* Pairprogramming pilot/co-pilot style*/
-        
-    public static String[][] BOARD = new String [][] {
-        {"A","B","C","E"},
-        {"S","F","C","S"},
-        {"A","D","E","E"}
+
+    public static String[][] BOARD = new String[][]{
+            {"A", "B", "C", "E"},
+            {"S", "F", "C", "S"},
+            {"A", "D", "E", "E"}
     };
 
     public static void main(String[] args) {
     }
 
     Boolean exists(String[][] board, String word) {
-        return (inputValidation(board, word) && match(board, word));
+
+        return (inputValidation(board, word) && match(board, word) && checkForCase(word));
+    }
+
+    public boolean checkForCase(String word) {
+        return !Character.isLowerCase(word.charAt(0));
+    }
+
+    public String wordToUpperCase(String input) {
+        return input.toUpperCase();
     }
 
     boolean inputValidation(String[][] board, String word) {
@@ -49,7 +58,9 @@ public class Main {
     }
 
     boolean validBoard(String[][] board) {
-        if (board == null) {return false;}
+        if (board == null) {
+            return false;
+        }
         int arrayWidth = board[0].length;
 
         for (int i = 1; i < board.length; i++) {
