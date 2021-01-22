@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Arrays;
+
 public class Main {
     /*
     Good morning! Here's your coding interview problem for today.
@@ -24,50 +26,51 @@ public class Main {
      */
 
     /* Pairprogramming pilot/co-pilot style*/
-    public static void main(String[] args) {
+        
+    public static String[][] BOARD = new String [][] {
+        {"A","B","C","E"},
+        {"S","F","C","S"},
+        {"A","D","E","E"}
+    };
 
+    public static void main(String[] args) {
     }
 
-    Boolean exists(String[] board, String word) {
+    Boolean exists(String[][] board, String word) {
         return (inputValidation(board, word) && match(board, word));
     }
 
-    boolean validBoard(String[] board) {
+    boolean inputValidation(String[][] board, String word) {
+        if (board == null || word == null) {
+            return false;
+        }
+
+        return (validBoard(board) && isNotTooLong(board, word));
+    }
+
+    boolean validBoard(String[][] board) {
         if (board == null) {return false;}
-        int arrayWidth = board[0].length();
+        int arrayWidth = board[0].length;
 
         for (int i = 1; i < board.length; i++) {
-            if (arrayWidth != board[i].length()) {
+            if (arrayWidth != board[i].length) {
                 return false;
             }
         }
         return true;
     }
 
-    boolean isNotTooLong(String[] board, String word) {
-        int arrayWidth = board[0].length();
+    boolean isNotTooLong(String[][] board, String word) {
+        int arrayWidth = board[0].length;
         int arraySpaces;
 
         arraySpaces = arrayWidth * board.length;
-        if (arraySpaces >= word.length()) {
-            return true;
-        }
-
-        return false;
+        return arraySpaces >= word.length();
     }
 
-    boolean inputValidation(String[] board, String word) {
-        if (board == null || word == null) {
-            return false;
-        }
-
-        return (validBoard(board) && isNotTooLong(board, word));
-
-    }
-
-    boolean match(String[] board, String word) {
-        for (String line : board) {
-            if (line.contains(word)) {
+    boolean match(String[][] board, String word) {
+        for (String[] line : board) {
+            if (Arrays.toString(line).contains(word)) {
                 return true;
             }
         }
