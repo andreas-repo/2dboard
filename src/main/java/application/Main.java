@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     /*
     Good morning! Here's your coding interview problem for today.
@@ -25,5 +28,53 @@ public class Main {
 
     public static void main(String[] args) {
 
+    }
+
+    public Boolean exists(String[][] board, String word) {
+        Boolean returnValue = validateInput(board, word);
+        return returnValue;
+    }
+
+    boolean findStart(String[][] board, String word) {
+        String startingLetter = String.valueOf(word.charAt(0));
+        for (int row = 0; row < board.length; row++) {
+            for (int cell = 0; cell < board[row].length; cell++) {
+               if (board[row][cell].equalsIgnoreCase(startingLetter)) {
+                   return true;
+               }
+            }
+        }
+        return false;
+    }
+
+    public Boolean validateInput(String[][] board, String word) {
+        if(board == null) return false;
+        if(word == null) return false;
+
+        if (board.length == 0) return false;
+        if (word.isEmpty()) return false;
+
+        return matchDimensions(board);
+    }
+
+    private Boolean matchDimensions(String[][] board) {
+        int arrayWidth = board[0][0].length();
+
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][0].length() != arrayWidth){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String[][] parseBoard(String[][] board) {
+        String[][] boardArray = new String[board.length][board[0][0].length()];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i][0].length(); j++) {
+                boardArray[i][j]= String.valueOf(board[i][0].charAt(j));
+            }
+        }
+        return boardArray;
     }
 }
