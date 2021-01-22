@@ -34,7 +34,17 @@ class MainTest {
     }
 
     @Test
+    void whenInputWordIsMatched_thenTrue() {
+        Assertions.assertTrue(main.exists(new String[]{"A","C"}, "A"));
+    }
+
+    @Test
     void whenInputIsMatched_thenTrue() {
         Assertions.assertFalse(main.exists(null,null));
+    }
+
+    @Test
+    void whenInputWordIsLongerThanArraySpaces_thenFalse() {
+        Assertions.assertFalse(main.isNotTooLong(new String[]{"A","B"}, "ABC"));
     }
 }

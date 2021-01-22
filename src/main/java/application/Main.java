@@ -23,15 +23,20 @@ public class Main {
     exists(board, "ABCB") returns false.
      */
 
+    /* Pairprogramming pilot/co-pilot style*/
     public static void main(String[] args) {
 
     }
 
     Boolean exists(String[] board, String word) {
-        return validBoard(board);
+        if (isNotNull(board) == true) {
+            return validBoard(board);
+        } else {
+            return false;
+        }
     }
 
-    private boolean validBoard(String[] board) {
+    boolean validBoard(String[] board) {
         int lenght;
         int arrayWidth = board[0].length();
         boolean valid = false;
@@ -48,4 +53,23 @@ public class Main {
         return valid;
     }
 
+    boolean isNotNull(Object input) {
+        boolean booleanVariable = false;
+        booleanVariable = input != null;
+        return booleanVariable;
+    }
+
+    boolean isNotTooLong(String[] board, String word) {
+        validBoard(board);
+        int arrayWidth = board[0].length();
+        int arraySpaces;
+        boolean booleanVariable = false;
+        arraySpaces = arrayWidth * board.length;
+        if (arraySpaces <= word.length()) {
+            booleanVariable = true;
+        } else {
+            booleanVariable = false;
+        }
+        return booleanVariable;
+    }
 }
